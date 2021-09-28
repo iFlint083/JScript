@@ -4,49 +4,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToDoList</title>
-    <style>
-        li{
-            font-style: oblique;
-            color: green;
-            list-style-type: none;
-            max-width: 300px;
-            padding: 20px;
-            margin: 10px auto;
-            background: aquamarine;
-            border: 1px dotted rgb(0, 22, 1);
-            border-radius: 28px;
-
-        }
-        h1{
-            background-color: aquamarine;
-            font-style: oblique;
-            color: green;
-            border: 1px dotted rgb(0, 22, 1);
-            border-radius: 28px;
-        }
-        button{
-            background-color: aquamarine;
-            font-style: oblique;
-            color: green;
-            border: 1px dotted rgb(0, 22, 1);
-            border-radius: 28px; 
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <h1>Todos</h1>
+    <script>
+    let numberOfFilms;
 
-    <ul>
-        <li>buy milk</li>
-        <li>read a book</li>
-        <li>play the guitar</li>
-        <li>pay the bills :(</li>
-    </ul>
-    <button>Add new ToDo!</button>
+        function start () {
+            numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+        while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+            numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+        }
+        
+        }
+        start();
+        
+        const personalMovieDB = {
+            count: numberOfFilms,
+            movies: {},
+            actors: {},
+            genres: {},
+            privat: false
+        };
+         
+        const a = prompt('Один из последних просмотренных фильмов?', ''),
+              b = prompt('На сколько его оцените?',''),
+              c = prompt('Один из последних просмотренных фильмов?', ''),
+              d = prompt('На сколько его оцените?','');
+        
+              personalMovieDB.movies[a] = b;
+              personalMovieDB.movies[c] = d;
+        
+        function rememberMyFilms(){
+            for (let i = 0; i > 2; i++) {
+                const a = prompt('Один из последних просмотренных фильмов?', ''),
+                b = prompt('На сколько его оцените?','');
+                if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+                personalMovieDB.movies[a] = b;
+                }else {i--;
+                }
+                } 
+        }
+        rememberMyFilms();
+        
+        function detectPersonalLevel() {
+            if (personalMovieDB.count < 10 ) {
+                console.log ('просмотрено мало фильмов');
+                } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) { 
+                console.log ('классический зритель');
+                } else if (personalMovieDB.count >= 30) {
+                    console.log ('киноман')
+                }else {
+                        console.log ('error');
+                    }
+                }
+        
+        detectPersonalLevel();
+        
+        function showMyDB (hidden) {
+        if (!hidden) {
+            console.log (personalMovieDB);
+        
+        }
+        }
+         showMyDB(personalMovieDB.privat);
+        
+         function writeYourGenres() {
+             for (let i =1; i<= 3; i++) {
+                 personalMovieDB.genres[i-1] = prompt (`Ваш любимый жанр под номером ${i}`);
+             }
+         }
+        console.log (personalMovieDB);
 
-    <button onclick="myFunction()">Try it</button>
+        const options - {
+            name: 'test',
+            age: 1024,
+            email: '',
+            colors: {
+                border : 'black',
+                bg: 'red'
 
-    <script src="js/script.js"></script>
+            }
+        }
+        
+for (let key in options) {
+    if (typeof(options[key])=== 'object') {
+        for (let i in options[key]){
+            console.log(`свойство ${i} имеет значение ${options[key][i]}`);
+        }
+    } else { 
+    console.log(`свойство ${key} имеет значение ${options[key]}`);
+    }
+}
+        </script>
 </body>
 </html>
